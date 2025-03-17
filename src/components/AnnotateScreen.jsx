@@ -338,7 +338,7 @@ function AnnotateScreen({
 	<p>a. Which one provide more salient information for the visualization?</p>
 	<div style={{ marginLeft: "20px" }}>
     	  <div style={{ display: "flex", justifyContent: "space-between", maxWidth: "400px", marginTop: "10px" }}>
-	    {[1, 2].map((num) => (
+	    {['Former', 'Latter'].map((num) => (
 	      <label key={num} style={{ textAlign: "center" }}>
 		<input
 		  type="radio"
@@ -363,7 +363,7 @@ function AnnotateScreen({
         <p>b. Which one provide more diverse information for the visualization?</p>
         <div style={{ marginLeft: "20px" }}>
           <div style={{ display: "flex", justifyContent: "space-between", maxWidth: "400px", marginTop: "10px" }}>
-            {[1, 2].map((num) => (
+            {['Former', 'Latter'].map((num) => (
               <label key={num} style={{ textAlign: "center" }}>
                 <input
                   type="radio"
@@ -388,7 +388,7 @@ function AnnotateScreen({
         <p>c. Which one provide more statistical information for the visualization?</p>
         <div style={{ marginLeft: "20px" }}>
           <div style={{ display: "flex", justifyContent: "space-between", maxWidth: "400px", marginTop: "10px" }}>
-            {[1, 2].map((num) => (
+            {['Former', 'Latter'].map((num) => (
               <label key={num} style={{ textAlign: "center" }}>
                 <input
                   type="radio"
