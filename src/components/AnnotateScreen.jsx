@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import json_list from '../assets/descriptions.json';
 
 function AnnotateScreen({
   images,
@@ -202,6 +203,10 @@ function AnnotateScreen({
   const currentAnno = annotationData.find((anno) => anno.imgSrc === currentImgSrc);
   const existingBoxes = currentAnno?.boxes || [];
 
+  const current_descs = json_list.find((data) => data.id === currentImgSrc.split("/").at(-1).substring(0,3));
+  const DescTrad = current_descs.trad;
+  const DescOurs = current_descs.ours;
+
   return (
     <div
       style={{
@@ -293,6 +298,30 @@ function AnnotateScreen({
             }}
           />
         )}
+      </div>
+
+      {/* 이미지 캡션 추가 */}
+      <div
+	style = {{
+	  display: 'flex',
+	  flexDirection: 'column',
+	  textAlign: 'left',
+          width: '100%',
+	  margineBottom: '20px',
+	}}
+      >
+	<div style = {{
+	  flex: "50%",
+	  padding: "10px",
+	}}>
+	  <p>	  {DescTrad}	  </p>
+	</div>
+	<div style = {{
+	  flex: "50%",
+	  padding: "10px",
+	}}>
+	  <p>	  {DescOurs}	  </p>
+	</div>
       </div>
 
       {/* 텍스트 입력 영역 */}

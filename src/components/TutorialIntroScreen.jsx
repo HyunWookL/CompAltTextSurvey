@@ -20,11 +20,16 @@ function TutorialIntroScreen({ onPracticeStart }) {
             </h2>
 
             <div style={{ marginTop: '20px' }}>
-                <p>
-                    In this experiment, you will view bar charts and line charts, select the most prominent region by drawing a
+	    	<p>
+	            In this experiment, you will view the charts and corresponding two descriptions, select the more informative descriptions 
+	            based on specfic aspect provided in questions. You will also select the most prominent region of the chart by drawing a 
+	            bounding box, and describe your selection. You may leave the comments about the descriptions as well.
+	        </p>
+	        /*<p>
+                    In this experiment, you will view bar charts, scatter charts, and line charts, select the most prominent region by drawing a
                     bounding box, and describe your selection. The chart title is structured uniformly to help you interpret the
                     chart components.
-                </p>
+                </p>*/
             </div>
 
             <div style={{ display: "flex", justifyContent: "center", marginTop: "10px" }}>
