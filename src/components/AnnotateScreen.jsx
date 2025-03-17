@@ -18,7 +18,7 @@ function AnnotateScreen({
   });
   const handleChange = (e) => {
       const {name, value} = e.target;
-      setFormData((prev) => ({...prev, [name]: value}));
+      setMainFormData((prev) => ({...prev, [name]: value}));
   };
 
   // 이미지 높이를 동적으로 조절하기 위한 상태
@@ -352,10 +352,6 @@ function AnnotateScreen({
 	      </label>
 	    ))}
 	  </div>
-  	  <div style={{ display: "flex", justifyContent: "space-between", maxWidth: "400px", marginTop: "5px" }}>
-	    <span style={{ fontSize: "12px" }}>Former</span>
-	    <span style={{ fontSize: "12px" }}>Latter</span>
-	  </div>
 	</div>
       </div>
 
@@ -377,10 +373,6 @@ function AnnotateScreen({
               </label>
             ))}
           </div>
-          <div style={{ display: "flex", justifyContent: "space-between", maxWidth: "400px", marginTop: "5px" }}>
-            <span style={{ fontSize: "12px" }}>Former</span>
-            <span style={{ fontSize: "12px" }}>Latter</span>
-          </div>
         </div>
       </div>
 
@@ -401,10 +393,6 @@ function AnnotateScreen({
                 {num}
               </label>
             ))}
-          </div>
-          <div style={{ display: "flex", justifyContent: "space-between", maxWidth: "400px", marginTop: "5px" }}>
-            <span style={{ fontSize: "12px" }}>Former</span>
-            <span style={{ fontSize: "12px" }}>Latter</span>
           </div>
         </div>
       </div>
