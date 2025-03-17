@@ -304,7 +304,6 @@ function AnnotateScreen({
       <div
 	style = {{
 	  display: 'flex',
-	  flexDirection: 'column',
 	  textAlign: 'left',
           width: '100%',
 	  margineBottom: '20px',
