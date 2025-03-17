@@ -55,7 +55,8 @@ function App() {
 
   // 구글 Apps Script URL
   const WEB_APP_URL =
-    'https://script.google.com/macros/s/AKfycbyN50ItId7fBzUh9o3dmdePHUikxQOlT_qHZJiAKz14uUfpQnHCag0PGtInV65v8ODq/exec';
+    'https://script.google.com/macros/s/AKfycbymVj1oxwNLUbasZQxLDAlS5R_vdc289O2c90sZP9qemRx5tOtEOQHnrYldVP5DcAEVKg/exec';
+    //'https://script.google.com/macros/s/AKfycbyN50ItId7fBzUh9o3dmdePHUikxQOlT_qHZJiAKz14uUfpQnHCag0PGtInV65v8ODq/exec';
 
   // 화면 전환
   const changeScreen = () => {

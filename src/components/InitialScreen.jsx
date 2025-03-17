@@ -21,7 +21,7 @@ function InitialScreen({ onStart }) {
       </p>
       {/* <br/> */}
       <p style={{ fontSize: '16px', color: '#555' }}>
-        This study explores how people perceive prominent regions in visualizations and has been approved by IRB (UNISTIRB-24-001-A).
+        This study explores how people perceive prominent regions in visualizations and has been approved by IRB (UNISTIRB-25-008-C).
       </p>
 
       <h2 style={{ color: '#222', marginTop: '30px' }}>⚠️ Participation Restrictions</h2>
