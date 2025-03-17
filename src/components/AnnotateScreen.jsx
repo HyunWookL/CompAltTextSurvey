@@ -11,6 +11,15 @@ function AnnotateScreen({
   const [startPoint, setStartPoint] = useState({ x: 0, y: 0 });
   const [tempBox, setTempBox] = useState(null);
   const [textInput, setTextInput] = useState('');
+  const [MainFormData, setMainFormData] = useState({
+      salient: "",
+      statistic: "",
+      diverse: ""
+  });
+  const handleChange = (e) => {
+      const {name, value} = e.target;
+      setFormData((prev) => ({...prev, [name]: value}));
+  };
 
   // 이미지 높이를 동적으로 조절하기 위한 상태
   const [imgHeight, setImgHeight] = useState(380);
@@ -49,6 +58,7 @@ function AnnotateScreen({
             imgSrc: currentImgSrc,
             boxes: [],
             text: '',
+	    score: {},
             image_up_timestamp: now,
           },
         ];
@@ -126,6 +136,7 @@ function AnnotateScreen({
             imgSrc: currentImgSrc,
             boxes: [newBox],
             text: '',
+	    score: {},
             box_drawn_timestamp: now,
           },
         ];
@@ -152,6 +163,7 @@ function AnnotateScreen({
         cloned[index] = {
           ...cloned[index],
           text: textInput,
+	  score: MainFormData,
           next_button_timestamp: now,
         };
       } else {
@@ -160,6 +172,7 @@ function AnnotateScreen({
           imgSrc: currentImgSrc,
           boxes: [],
           text: textInput,
+	  score: MainFormData,
           next_button_timestamp: now,
         });
       }
@@ -168,6 +181,12 @@ function AnnotateScreen({
 
     setAnnotationData(newAnnotationData);
     setTextInput('');
+    setMainFormData({
+      salient: "",
+      statistic: "",
+      diverse: ""
+    });
+    
 
     // 마지막 이미지인지 체크
     if (currentIndex === images.length - 1) {
@@ -314,6 +333,91 @@ function AnnotateScreen({
         />
       </div>
 
+      {/* Salient/Statistical/Diverse 입력창 */}
+      <div                                     
+        style={{                             
+          maxWidth: "800px",               
+          height: "100%",                  
+          marginTop: "30px",               
+          fontFamily: "Arial, sans-serif", 
+          lineHeight: "1.6",               
+          textAlign: "left",               
+        }}
+      >
+        <div style={{ marginTop: "20px", color: "#555" }}>
+	  <p>a. Which one provide more salient information for the visualization?</p>
+	    <div style={{ marginLeft: "20px" }}>
+    	      <div style={{ display: "flex", justifyContent: "space-between", maxWidth: "400px", marginTop: "10px" }}>
+	        {[1, 2].map((num) => (
+		  <label key={num} style={{ textAlign: "center" }}>
+		    <input
+		      type="radio"
+  		      name="salient"
+		      value={num}
+		      checked={MainFormData.salient === String(num)}
+		      onChange={handleChange}
+		      style={{ display: "block", margin: "0 auto" }}
+		    />
+		  {num}
+		  </label>
+		))}
+	    </div>
+  	    <div style={{ display: "flex", justifyContent: "space-between", maxWidth: "400px", marginTop: "5px" }}>
+	      <span style={{ fontSize: "12px" }}>Former</span>
+	      <span style={{ fontSize: "12px" }}>Latter</span>
+	    </div>
+	  </div>
+	</div>
+	<div style={{ marginTop: "20px", color: "#555" }}>
+          <p>a. Which one provide more diverse information for the visualization?</p>
+            <div style={{ marginLeft: "20px" }}>
+              <div style={{ display: "flex", justifyContent: "space-between", maxWidth: "400px", marginTop: "10px" }}>
+                {[1, 2].map((num) => (
+                  <label key={num} style={{ textAlign: "center" }}>
+                    <input
+                      type="radio"
+                      name="diverse"
+                      value={num}
+                      checked={MainFormData.diverse === String(num)}
+                      onChange={handleChange}
+                      style={{ display: "block", margin: "0 auto" }}
+                    />
+                  {num}
+                  </label>
+                ))}
+            </div>
+            <div style={{ display: "flex", justifyContent: "space-between", maxWidth: "400px", marginTop: "5px" }}>
+              <span style={{ fontSize: "12px" }}>Former</span>
+              <span style={{ fontSize: "12px" }}>Latter</span>
+            </div>
+          </div>
+        </div>
+        <div style={{ marginTop: "20px", color: "#555" }}>
+          <p>a. Which one provide more statistical information for the visualization?</p>
+            <div style={{ marginLeft: "20px" }}>
+              <div style={{ display: "flex", justifyContent: "space-between", maxWidth: "400px", marginTop: "10px" }}>
+                {[1, 2].map((num) => (
+                  <label key={num} style={{ textAlign: "center" }}>
+                    <input
+                      type="radio"
+                      name="statistic"
+                      value={num}
+                      checked={MainFormData.statistic === String(num)}
+                      onChange={handleChange}
+                      style={{ display: "block", margin: "0 auto" }}
+                    />
+                  {num}
+                  </label>
+                ))}
+            </div>
+            <div style={{ display: "flex", justifyContent: "space-between", maxWidth: "400px", marginTop: "5px" }}>
+              <span style={{ fontSize: "12px" }}>Former</span>
+              <span style={{ fontSize: "12px" }}>Latter</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
       {/* Next / Finish 버튼 */}
       <button
         style={{
