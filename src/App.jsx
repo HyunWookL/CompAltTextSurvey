@@ -104,7 +104,8 @@ function App() {
 
     try {
       const response = await fetch(WEB_APP_URL, {
-        method: 'POST',
+	redirect: 'follow',
+	method: 'POST',
         mode: 'cors',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
