@@ -334,90 +334,81 @@ function AnnotateScreen({
       </div>
 
       {/* Salient/Statistical/Diverse 입력창 */}
-      <div                                     
-        style={{                             
-          maxWidth: "800px",               
-          height: "100%",                  
-          marginTop: "30px",               
-          fontFamily: "Arial, sans-serif", 
-          lineHeight: "1.6",               
-          textAlign: "left",               
-        }}
-      >
-        <div style={{ marginTop: "20px", color: "#555" }}>
-	  <p>a. Which one provide more salient information for the visualization?</p>
-	    <div style={{ marginLeft: "20px" }}>
-    	      <div style={{ display: "flex", justifyContent: "space-between", maxWidth: "400px", marginTop: "10px" }}>
-	        {[1, 2].map((num) => (
-		  <label key={num} style={{ textAlign: "center" }}>
-		    <input
-		      type="radio"
-  		      name="salient"
-		      value={num}
-		      checked={MainFormData.salient === String(num)}
-		      onChange={handleChange}
-		      style={{ display: "block", margin: "0 auto" }}
-		    />
-		  {num}
-		  </label>
-		))}
-	    </div>
-  	    <div style={{ display: "flex", justifyContent: "space-between", maxWidth: "400px", marginTop: "5px" }}>
-	      <span style={{ fontSize: "12px" }}>Former</span>
-	      <span style={{ fontSize: "12px" }}>Latter</span>
-	    </div>
+      <div style={{ marginTop: "20px", color: "#555" }}>
+	<p>a. Which one provide more salient information for the visualization?</p>
+	<div style={{ marginLeft: "20px" }}>
+    	  <div style={{ display: "flex", justifyContent: "space-between", maxWidth: "400px", marginTop: "10px" }}>
+	    {[1, 2].map((num) => (
+	      <label key={num} style={{ textAlign: "center" }}>
+		<input
+		  type="radio"
+  		  name="salient"
+		  value={num}
+		  checked={MainFormData.salient === String(num)}
+		  onChange={handleChange}
+		  style={{ display: "block", margin: "0 auto" }}
+		/>
+		{num}
+	      </label>
+	    ))}
+	  </div>
+  	  <div style={{ display: "flex", justifyContent: "space-between", maxWidth: "400px", marginTop: "5px" }}>
+	    <span style={{ fontSize: "12px" }}>Former</span>
+	    <span style={{ fontSize: "12px" }}>Latter</span>
 	  </div>
 	</div>
-	<div style={{ marginTop: "20px", color: "#555" }}>
-          <p>a. Which one provide more diverse information for the visualization?</p>
-            <div style={{ marginLeft: "20px" }}>
-              <div style={{ display: "flex", justifyContent: "space-between", maxWidth: "400px", marginTop: "10px" }}>
-                {[1, 2].map((num) => (
-                  <label key={num} style={{ textAlign: "center" }}>
-                    <input
-                      type="radio"
-                      name="diverse"
-                      value={num}
-                      checked={MainFormData.diverse === String(num)}
-                      onChange={handleChange}
-                      style={{ display: "block", margin: "0 auto" }}
-                    />
-                  {num}
-                  </label>
-                ))}
-            </div>
-            <div style={{ display: "flex", justifyContent: "space-between", maxWidth: "400px", marginTop: "5px" }}>
-              <span style={{ fontSize: "12px" }}>Former</span>
-              <span style={{ fontSize: "12px" }}>Latter</span>
-            </div>
-          </div>
-        </div>
-        <div style={{ marginTop: "20px", color: "#555" }}>
-          <p>a. Which one provide more statistical information for the visualization?</p>
-            <div style={{ marginLeft: "20px" }}>
-              <div style={{ display: "flex", justifyContent: "space-between", maxWidth: "400px", marginTop: "10px" }}>
-                {[1, 2].map((num) => (
-                  <label key={num} style={{ textAlign: "center" }}>
-                    <input
-                      type="radio"
-                      name="statistic"
-                      value={num}
-                      checked={MainFormData.statistic === String(num)}
-                      onChange={handleChange}
-                      style={{ display: "block", margin: "0 auto" }}
-                    />
-                  {num}
-                  </label>
-                ))}
-            </div>
-            <div style={{ display: "flex", justifyContent: "space-between", maxWidth: "400px", marginTop: "5px" }}>
-              <span style={{ fontSize: "12px" }}>Former</span>
-              <span style={{ fontSize: "12px" }}>Latter</span>
-            </div>
-          </div>
-        </div>
-
       </div>
+
+      <div style={{ marginTop: "20px", color: "#555" }}>
+        <p>b. Which one provide more diverse information for the visualization?</p>
+        <div style={{ marginLeft: "20px" }}>
+          <div style={{ display: "flex", justifyContent: "space-between", maxWidth: "400px", marginTop: "10px" }}>
+            {[1, 2].map((num) => (
+              <label key={num} style={{ textAlign: "center" }}>
+                <input
+                  type="radio"
+                  name="diverse"
+                  value={num}
+                  checked={MainFormData.diverse === String(num)}
+                  onChange={handleChange}
+                  style={{ display: "block", margin: "0 auto" }}
+                />
+                {num}
+              </label>
+            ))}
+          </div>
+          <div style={{ display: "flex", justifyContent: "space-between", maxWidth: "400px", marginTop: "5px" }}>
+            <span style={{ fontSize: "12px" }}>Former</span>
+            <span style={{ fontSize: "12px" }}>Latter</span>
+          </div>
+        </div>
+      </div>
+
+      <div style={{ marginTop: "20px", color: "#555" }}>
+        <p>c. Which one provide more statistical information for the visualization?</p>
+        <div style={{ marginLeft: "20px" }}>
+          <div style={{ display: "flex", justifyContent: "space-between", maxWidth: "400px", marginTop: "10px" }}>
+            {[1, 2].map((num) => (
+              <label key={num} style={{ textAlign: "center" }}>
+                <input
+                  type="radio"
+                  name="statistic"
+                  value={num}
+                  checked={MainFormData.statistic === String(num)}
+                  onChange={handleChange}
+                  style={{ display: "block", margin: "0 auto" }}
+                />
+                {num}
+              </label>
+            ))}
+          </div>
+          <div style={{ display: "flex", justifyContent: "space-between", maxWidth: "400px", marginTop: "5px" }}>
+            <span style={{ fontSize: "12px" }}>Former</span>
+            <span style={{ fontSize: "12px" }}>Latter</span>
+          </div>
+        </div>
+      </div>
+
       {/* Next / Finish 버튼 */}
       <button
         style={{
