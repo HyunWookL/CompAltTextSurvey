@@ -15,7 +15,10 @@ function AnnotateScreen({
   const [MainFormData, setMainFormData] = useState({
       salient: "",
       statistic: "",
-      diverse: ""
+      diverse: "",
+      salientText: "",
+      statisticText: "",
+      diverseText: ""
   });
   const handleChange = (e) => {
       const {name, value} = e.target;
@@ -203,7 +206,10 @@ function AnnotateScreen({
     setMainFormData({
       salient: "",
       statistic: "",
-      diverse: ""
+      diverse: "",
+      salientText: "",
+      statisticText: "",
+      diverseText: ""
     });
     setPhase('Phase1');
 
@@ -366,7 +372,6 @@ function AnnotateScreen({
         <textarea
           id="description"
           style={{
-            // width: '100%',
             width: imgSize.width, // 이미지 너비에 맞춤
             height: '100px', // 고정 높이 (필요 시 조절 또는 동적 계산)
             fontSize: '14px',
@@ -400,6 +405,30 @@ function AnnotateScreen({
 	    	))}
 	  	  </div>
 		</div>
+        <label
+          htmlFor="description"
+          style={{
+            marginBottom: '6px',
+            fontWeight: 'bold',
+            fontSize: '14px',
+          }}
+        >
+          Why do you think that description provide more salient information?
+        </label>
+        <textarea
+          id="description"
+          style={{
+            width: imgSize.width, // 이미지 너비에 맞춤
+            height: '100px', // 고정 높이 (필요 시 조절 또는 동적 계산)
+            fontSize: '14px',
+            padding: '8px',
+            resize: 'none',
+            boxSizing: 'border-box',
+            alignSelf: 'center',
+          }}
+          value={MainFormData.salientText}
+          onChange={(e) => MainFormData.salientText === e.target.value}
+        />
       </div>}
 
       {phase === 'Phase3' && <div id="Phase3" style={{ marginTop: "20px", color: "#555" }}>
@@ -421,6 +450,30 @@ function AnnotateScreen({
             ))}
           </div>
         </div>
+        <label
+          htmlFor="description"
+          style={{
+            marginBottom: '6px',
+            fontWeight: 'bold',
+            fontSize: '14px',
+          }}
+        >
+          Why do you think that description provide more diverse information?
+        </label>
+        <textarea
+          id="description"
+          style={{
+            width: imgSize.width, // 이미지 너비에 맞춤
+            height: '100px', // 고정 높이 (필요 시 조절 또는 동적 계산)
+            fontSize: '14px',
+            padding: '8px',
+            resize: 'none',
+            boxSizing: 'border-box',
+            alignSelf: 'center',
+          }}
+          value={MainFormData.diverseText}
+          onChange={(e) => MainFormData.diverseText === e.target.value}
+        />
       </div>}
 
       {phase === 'Phase4' && <div id="Phase4" style={{ marginTop: "20px", color: "#555" }}>
@@ -442,6 +495,30 @@ function AnnotateScreen({
             ))}
           </div>
         </div>
+        <label
+          htmlFor="description"
+          style={{
+            marginBottom: '6px',
+            fontWeight: 'bold',
+            fontSize: '14px',
+          }}
+        >
+          Why do you think that description provide more statistical information?
+        </label>
+        <textarea
+          id="description"
+          style={{
+            width: imgSize.width, // 이미지 너비에 맞춤
+            height: '100px', // 고정 높이 (필요 시 조절 또는 동적 계산)
+            fontSize: '14px',
+            padding: '8px',
+            resize: 'none',
+            boxSizing: 'border-box',
+            alignSelf: 'center',
+          }}
+          value={MainFormData.statisticText}
+          onChange={(e) => MainFormData.statisticText === e.target.value}
+        />
       </div>}
 
       {/* Phase Next Button */}
@@ -456,12 +533,12 @@ function AnnotateScreen({
           color: 'white',
           border: 'none',
           borderRadius: '6px',
-          cursor: (phase === 'Phase1' && (existingBoxes.length !== 1 || textInput === '')) || (phase === 'Phase2' && (MainFormData.salient === '')) || (phase === 'Phase3' && (MainFormData.diverse === '')) || (phase === 'Phase4' && (MainFormData.statistic === '')) ? 'not-allowed' : 'pointer',
-          opacity: (phase === 'Phase1' && (existingBoxes.length !== 1 || textInput === '')) || (phase === 'Phase2' && (MainFormData.salient === '')) || (phase === 'Phase3' && (MainFormData.diverse === '')) || (phase === 'Phase4' && (MainFormData.statistic === '')) ? 0.5 : 1, // 비활성화 시 흐리게 표시
+          cursor: (phase === 'Phase1' && (existingBoxes.length !== 1 || textInput === '')) || (phase === 'Phase2' && (MainFormData.salient === '' || MainFormData.salientText === '')) || (phase === 'Phase3' && (MainFormData.diverse === '' || MainFormData.diverseText === '')) || (phase === 'Phase4' && (MainFormData.statistic === '' || MainFormData.statisticText === '')) ? 'not-allowed' : 'pointer',
+          opacity: (phase === 'Phase1' && (existingBoxes.length !== 1 || textInput === '')) || (phase === 'Phase2' && (MainFormData.salient === '' || MainFormData.salientText === '')) || (phase === 'Phase3' && (MainFormData.diverse === '' || MainFormData.diverseText === '')) || (phase === 'Phase4' && (MainFormData.statistic === '' || MainFormData.statisticText === '')) ? 0.5 : 1, // 비활성화 시 흐리게 표시
           transition: 'background-color 0.3s ease, transform 0.2s ease',
         }}
         onClick={changePhase}
-        disabled={(phase === 'Phase1' && (existingBoxes.length !== 1 || textInput === '')) || (phase === 'Phase2' && (MainFormData.salient === '')) || (phase === 'Phase3' && (MainFormData.diverse === '')) || (phase === 'Phase4' && (MainFormData.statistic === ''))}
+        disabled={(phase === 'Phase1' && (existingBoxes.length !== 1 || textInput === '')) || (phase === 'Phase2' && (MainFormData.salient === '' || MainFormData.salientText === '')) || (phase === 'Phase3' && (MainFormData.diverse === '' || MainFormData.diverseText === '')) || (phase === 'Phase4' && (MainFormData.statistic === '' || MainFormData.statisticText === ''))}
         onMouseEnter={(e) => {
             e.target.style.backgroundColor = '#5a6268'; // Next 버튼: 진한 회색
         }}
@@ -469,12 +546,13 @@ function AnnotateScreen({
             e.target.style.backgroundColor = '#6c757d'; // Next 버튼: 원래 회색
         }}
       >
-        {'Next'}
+        {'Next Questions'}
       </button>
 
       {/* Next / Finish 버튼 */}
       <button
         style={{
+	  display: phase === 'Phase4' ? 'flex' : 'none',
           marginBottom: '30px',
           padding: '12px 24px',
           fontSize: currentIndex === images.length - 1 ? '18px' : '16px', // 마지막 버튼 크기 증가
