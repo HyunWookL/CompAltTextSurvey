@@ -427,7 +427,7 @@ function AnnotateScreen({
           Why do you think that description provide more salient information?
         </label>
         <textarea
-          id="description"
+          id="descriptionSal"
           style={{
             width: imgSize.width, // 이미지 너비에 맞춤
             height: '100px', // 고정 높이 (필요 시 조절 또는 동적 계산)
@@ -437,7 +437,7 @@ function AnnotateScreen({
             boxSizing: 'border-box',
             alignSelf: 'center',
           }}
-          value={MainFormData.salientText}
+	  name="salientText"
           onChange={handleChange}
         />
 	</div>
@@ -484,7 +484,7 @@ function AnnotateScreen({
           Why do you think that description provide more diverse information?
         </label>
         <textarea
-          id="description"
+          id="descriptionDiv"
           style={{
             width: imgSize.width, // 이미지 너비에 맞춤
             height: '100px', // 고정 높이 (필요 시 조절 또는 동적 계산)
@@ -494,7 +494,7 @@ function AnnotateScreen({
             boxSizing: 'border-box',
             alignSelf: 'center',
           }}
-          value={MainFormData.diverseText}
+          name="diverseText"
           onChange={handleChange}
         />
 	</div>
@@ -541,7 +541,7 @@ function AnnotateScreen({
           Why do you think that description provide more statistical information?
         </label>
         <textarea
-          id="description"
+          id="descriptionStat"
           style={{
             width: imgSize.width, // 이미지 너비에 맞춤
             height: '100px', // 고정 높이 (필요 시 조절 또는 동적 계산)
@@ -551,7 +551,7 @@ function AnnotateScreen({
             boxSizing: 'border-box',
             alignSelf: 'center',
           }}
-          value={MainFormData.statisticText}
+          name="statisticText"
           onChange={handleChange}
         />
 	</div>
