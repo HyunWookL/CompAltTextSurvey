@@ -438,7 +438,7 @@ function AnnotateScreen({
             alignSelf: 'center',
           }}
           value={MainFormData.salientText}
-          onChange={(e) => MainFormData.salientText === e.target.value}
+          onChange={handleChange}
         />
 	</div>
       </div>}
@@ -495,7 +495,7 @@ function AnnotateScreen({
             alignSelf: 'center',
           }}
           value={MainFormData.diverseText}
-          onChange={(e) => MainFormData.diverseText === e.target.value}
+          onChange={handleChange}
         />
 	</div>
       </div>}
@@ -552,7 +552,7 @@ function AnnotateScreen({
             alignSelf: 'center',
           }}
           value={MainFormData.statisticText}
-          onChange={(e) => MainFormData.statisticText === e.target.value}
+          onChange={handleChange}
         />
 	</div>
       </div>}
