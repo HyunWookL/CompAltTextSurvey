@@ -460,7 +460,7 @@ function AnnotateScreen({
           opacity: (phase === 'Phase1' && (existingBoxes.length !== 1 || textInput === '')) || (phase === 'Phase2' && (MainFormData.salient === '')) || (phase === 'Phase3' && (MainFormData.diverse === '')) || (phase === 'Phase4' && (MainFormData.statistic === '')) ? 0.5 : 1, // 비활성화 시 흐리게 표시
           transition: 'background-color 0.3s ease, transform 0.2s ease',
         }}
-        onClick={handleNextPhase}
+        onClick={changePhase}
         disabled={(phase === 'Phase1' && (existingBoxes.length !== 1 || textInput === '')) || (phase === 'Phase2' && (MainFormData.salient === '')) || (phase === 'Phase3' && (MainFormData.diverse === '')) || (phase === 'Phase4' && (MainFormData.statistic === ''))}
         onMouseEnter={(e) => {
             e.target.style.backgroundColor = '#5a6268'; // Next 버튼: 진한 회색
