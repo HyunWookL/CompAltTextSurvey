@@ -21,7 +21,7 @@ function AnnotateScreen({
       const {name, value} = e.target;
       setMainFormData((prev) => ({...prev, [name]: value}));
   };
-
+  const [phase, setPhase] = useState('Phase1');
   // 이미지 높이를 동적으로 조절하기 위한 상태
   const [imgHeight, setImgHeight] = useState(380);
   const [imgSize, setImgSize] = useState({ width: 'auto', height: 'auto' });
@@ -147,6 +147,24 @@ function AnnotateScreen({
     setTempBox(null);
   };
 
+
+
+
+  // ─────────────────────────────────────────────────────────────────────────────
+  // ③ changeScreen과 동일 -- button 기반으로 Phase 바꿔주기
+  // ─────────────────────────────────────────────────────────────────────────────
+  const changePhase = () => {
+  	if (phase === 'Phase1') {
+  	  setPhase('Phase2');
+  	} else if (phase === 'Phase2') {
+  	  setPhase('Phase3');
+  	} else if (phase === 'Phase3') {
+  	  setPhase('Phase4');
+  	} else if (phase === 'Phase4') {
+  	  setPhase('Phase1')
+  	}
+  }
+
   // ─────────────────────────────────────────────────────────────────────────────
   // ③ Next 버튼 눌렀을 때 next_button_timestamp 저장 + text 내용 반영
   // ─────────────────────────────────────────────────────────────────────────────
@@ -187,7 +205,7 @@ function AnnotateScreen({
       statistic: "",
       diverse: ""
     });
-    
+    setPhase('Phase1');
 
     // 마지막 이미지인지 체크
     if (currentIndex === images.length - 1) {
@@ -254,7 +272,7 @@ function AnnotateScreen({
         <img
           ref={imgRef}
           src={currentImgSrc}
-          alt={`img-${currentIndex}`}
+          //alt={`img-${currentIndex}`}
           style={{
             width: imgSize.width,
             height: imgSize.height,
@@ -302,29 +320,30 @@ function AnnotateScreen({
 
       {/* 이미지 캡션 추가 */}
       <div
-	style = {{
-	  display: 'flex',
-	  textAlign: 'left',
+        style = {{
+	      display: 'flex',
+	      textAlign: 'left',
           width: '100%',
-	  margineBottom: '20px',
-	}}
+          margineBottom: '20px',
+        }}
       >
-	<div style = {{
-	  flex: "50%",
-	  padding: "10px",
-	}}>
-	  <p>	  {DescTrad}	  </p>
-	</div>
-	<div style = {{
-	  flex: "50%",
-	  padding: "10px",
-	}}>
-	  <p>	  {DescOurs}	  </p>
-	</div>
+	    <div style = {{
+	      flex: "50%",
+	      padding: "10px",
+	      }}
+	    >
+	      <p>{DescTrad}</p>
+	    </div>
+	    <div style = {{
+	      flex: "50%",
+	      padding: "10px",
+	    }}>
+	  	  <p>{DescOurs}</p>
+		</div>
       </div>
 
       {/* 텍스트 입력 영역 */}
-      <div
+      {phase === 'Phase1' && <div
         style={{
           display: 'flex',
           flexDirection: 'column',
@@ -359,35 +378,35 @@ function AnnotateScreen({
           value={textInput}
           onChange={(e) => setTextInput(e.target.value)}
         />
-      </div>
+      </div>}
 
       {/* Salient/Statistical/Diverse 입력창 */}
-      <div style={{ marginTop: "20px", color: "#555" }}>
-	<p>a. Which one provide more salient information for the visualization?</p>
-	<div style={{ marginLeft: "20px" }}>
-    	  <div style={{ display: "flex", justifyContent: "space-between", maxWidth: "400px", marginTop: "10px" }}>
-	    {['Former', 'Latter'].map((num) => (
-	      <label key={num} style={{ textAlign: "center" }}>
-		<input
-		  type="radio"
-  		  name="salient"
-		  value={num}
-		  checked={MainFormData.salient === String(num)}
-		  onChange={handleChange}
-		  style={{ display: "block", margin: "0 auto" }}
-		/>
-		{num}
-	      </label>
-	    ))}
-	  </div>
-	</div>
-      </div>
+      {phase === 'Phase2' && <div id="Phase2" style={{ marginTop: "20px", color: "#555" }}>
+		<p>a. Which one provide more salient information for the visualization?</p>
+		<div style={{ marginLeft: "20px" }}>
+      	  <div style={{ display: "flex", justifyContent: "space-between", maxWidth: "400px", marginTop: "10px" }}>
+	  		{['A', 'B'].map((num) => (
+	      	  <label key={num} style={{ textAlign: "center" }}>
+		    	<input
+		      	  type="radio"
+  		      	  name="salient"
+		      	  value={num}
+		      	  checked={MainFormData.salient === String(num)}
+		      	  onChange={handleChange}
+		      	  style={{ display: "block", margin: "0 auto" }}
+		    	/>
+		    	{num}
+	      	  </label>
+	    	))}
+	  	  </div>
+		</div>
+      </div>}
 
-      <div style={{ marginTop: "20px", color: "#555" }}>
+      {phase === 'Phase3' && <div id="Phase3" style={{ marginTop: "20px", color: "#555" }}>
         <p>b. Which one provide more diverse information for the visualization?</p>
         <div style={{ marginLeft: "20px" }}>
           <div style={{ display: "flex", justifyContent: "space-between", maxWidth: "400px", marginTop: "10px" }}>
-            {['Former', 'Latter'].map((num) => (
+            {['A', 'B'].map((num) => (
               <label key={num} style={{ textAlign: "center" }}>
                 <input
                   type="radio"
@@ -402,13 +421,13 @@ function AnnotateScreen({
             ))}
           </div>
         </div>
-      </div>
+      </div>}
 
-      <div style={{ marginTop: "20px", color: "#555" }}>
+      {phase === 'Phase4' && <div id="Phase4" style={{ marginTop: "20px", color: "#555" }}>
         <p>c. Which one provide more statistical information for the visualization?</p>
         <div style={{ marginLeft: "20px" }}>
           <div style={{ display: "flex", justifyContent: "space-between", maxWidth: "400px", marginTop: "10px" }}>
-            {['Former', 'Latter'].map((num) => (
+            {['A', 'B'].map((num) => (
               <label key={num} style={{ textAlign: "center" }}>
                 <input
                   type="radio"
@@ -423,7 +442,35 @@ function AnnotateScreen({
             ))}
           </div>
         </div>
-      </div>
+      </div>}
+
+      {/* Phase Next Button */}
+      <button
+        style={{
+          display: phase === 'Phase4' ? 'none' : 'flex',
+          marginBottom: '30px',
+          padding: '12px 24px',
+          fontSize: '16px', // 마지막 버튼 크기 증가
+          fontWeight: 'bold',
+          backgroundColor: '#6c757d', // Finish: 초록색, Next: 회색
+          color: 'white',
+          border: 'none',
+          borderRadius: '6px',
+          cursor: (phase === 'Phase1' && (existingBoxes.length !== 1 || textInput === '')) || (phase === 'Phase2' && (MainFormData.salient === '')) || (phase === 'Phase3' && (MainFormData.diverse === '')) || (phase === 'Phase4' && (MainFormData.statistic === '')) ? 'not-allowed' : 'pointer',
+          opacity: (phase === 'Phase1' && (existingBoxes.length !== 1 || textInput === '')) || (phase === 'Phase2' && (MainFormData.salient === '')) || (phase === 'Phase3' && (MainFormData.diverse === '')) || (phase === 'Phase4' && (MainFormData.statistic === '')) ? 0.5 : 1, // 비활성화 시 흐리게 표시
+          transition: 'background-color 0.3s ease, transform 0.2s ease',
+        }}
+        onClick={handleNextPhase}
+        disabled={(phase === 'Phase1' && (existingBoxes.length !== 1 || textInput === '')) || (phase === 'Phase2' && (MainFormData.salient === '')) || (phase === 'Phase3' && (MainFormData.diverse === '')) || (phase === 'Phase4' && (MainFormData.statistic === ''))}
+        onMouseEnter={(e) => {
+            e.target.style.backgroundColor = '#5a6268'; // Next 버튼: 진한 회색
+        }}
+        onMouseLeave={(e) => {
+            e.target.style.backgroundColor = '#6c757d'; // Next 버튼: 원래 회색
+        }}
+      >
+        {'Next'}
+      </button>
 
       {/* Next / Finish 버튼 */}
       <button
@@ -464,3 +511,4 @@ function AnnotateScreen({
 }
 
 export default AnnotateScreen;
+
