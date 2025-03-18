@@ -405,6 +405,17 @@ function AnnotateScreen({
 	    	))}
 	  	  </div>
 		</div>
+	<div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          // maxWidth: '600px', // 필요에 따라 조절
+          // width: '100%',
+          textAlign: 'left',
+          marginBottom: '20px',
+        }}
+        >
+
         <label
           htmlFor="description"
           style={{
@@ -429,6 +440,7 @@ function AnnotateScreen({
           value={MainFormData.salientText}
           onChange={(e) => MainFormData.salientText === e.target.value}
         />
+	</div>
       </div>}
 
       {phase === 'Phase3' && <div id="Phase3" style={{ marginTop: "20px", color: "#555" }}>
@@ -450,6 +462,17 @@ function AnnotateScreen({
             ))}
           </div>
         </div>
+	<div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          // maxWidth: '600px', // 필요에 따라 조절
+          // width: '100%',
+          textAlign: 'left',
+          marginBottom: '20px',
+        }}
+        >
+
         <label
           htmlFor="description"
           style={{
@@ -474,6 +497,7 @@ function AnnotateScreen({
           value={MainFormData.diverseText}
           onChange={(e) => MainFormData.diverseText === e.target.value}
         />
+	</div>
       </div>}
 
       {phase === 'Phase4' && <div id="Phase4" style={{ marginTop: "20px", color: "#555" }}>
@@ -495,6 +519,17 @@ function AnnotateScreen({
             ))}
           </div>
         </div>
+	<div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          // maxWidth: '600px', // 필요에 따라 조절
+          // width: '100%',
+          textAlign: 'left',
+          marginBottom: '20px',
+        }}
+        >
+
         <label
           htmlFor="description"
           style={{
@@ -519,6 +554,7 @@ function AnnotateScreen({
           value={MainFormData.statisticText}
           onChange={(e) => MainFormData.statisticText === e.target.value}
         />
+	</div>
       </div>}
 
       {/* Phase Next Button */}
