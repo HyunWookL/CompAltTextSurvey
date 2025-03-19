@@ -327,9 +327,9 @@ function AnnotateScreen({
       {/* 이미지 캡션 추가 */}
       <div
         style = {{
-	      display: 'flex',
-	      textAlign: 'left',
-          width: '100%',
+          display: phase === 'Phase1' ? 'none' : 'flex',
+	  textAlign: 'left',
+          width: '1000px',
           margineBottom: '20px',
         }}
       >
