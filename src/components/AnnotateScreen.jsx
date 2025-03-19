@@ -389,7 +389,7 @@ function AnnotateScreen({
       {phase === 'Phase2' && <div id="Phase2" style={{ marginTop: "20px", color: "#555" }}>
 		<p>a. Which one provide more salient information for the visualization?</p>
 		<div style={{ marginLeft: "20px" }}>
-      	  <div style={{ display: "flex", justifyContent: "space-between", maxWidth: "400px", marginTop: "10px" }}>
+      	  <div style={{ display: "flex", justifyContent: "space-between", maxWidth: "400px", marginTop: "10px", textAlign: 'center'}}>
 	  		{['A', 'B'].map((num) => (
 	      	  <label key={num} style={{ textAlign: "center" }}>
 		    	<input
@@ -446,7 +446,7 @@ function AnnotateScreen({
       {phase === 'Phase3' && <div id="Phase3" style={{ marginTop: "20px", color: "#555" }}>
         <p>b. Which one provide more diverse information for the visualization?</p>
         <div style={{ marginLeft: "20px" }}>
-          <div style={{ display: "flex", justifyContent: "space-between", maxWidth: "400px", marginTop: "10px" }}>
+          <div style={{ display: "flex", justifyContent: "space-between", maxWidth: "400px", marginTop: "10px", textAlign: 'center'}}>
             {['A', 'B'].map((num) => (
               <label key={num} style={{ textAlign: "center" }}>
                 <input
@@ -503,7 +503,7 @@ function AnnotateScreen({
       {phase === 'Phase4' && <div id="Phase4" style={{ marginTop: "20px", color: "#555" }}>
         <p>c. Which one provide more statistical information for the visualization?</p>
         <div style={{ marginLeft: "20px" }}>
-          <div style={{ display: "flex", justifyContent: "space-between", maxWidth: "400px", marginTop: "10px" }}>
+          <div style={{ display: "flex", justifyContent: "space-between", maxWidth: "400px", marginTop: "10px", textAlign: 'center'}}>
             {['A', 'B'].map((num) => (
               <label key={num} style={{ textAlign: "center" }}>
                 <input
@@ -618,7 +618,7 @@ function AnnotateScreen({
           }
         }}
       >
-        {currentIndex === images.length - 1 ? 'Finish' : 'Next'}
+        {currentIndex === images.length - 1 ? 'Finish The Survey' : 'Go To Next Image'}
       </button>
     </div>
   );
