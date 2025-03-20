@@ -431,7 +431,7 @@ function AnnotateScreen({
             fontSize: '14px',
           }}
         >
-          Why do you think that description provide <span style="text-decoration:underline">more salient information</span>?
+          Why do you think that description provide <span style={{textDecoration:"underline"}}>more salient information</span>?
         </label>
         <textarea
           id="descriptionSal"
@@ -488,7 +488,7 @@ function AnnotateScreen({
             fontSize: '14px',
           }}
         >
-          Why do you think that description provide <span style="text-decoration:underline">more diverse information</span>?
+          Why do you think that description provide <span style={{textDecoration:"underline"}}>more diverse information</span>?
         </label>
         <textarea
           id="descriptionDiv"
@@ -545,7 +545,7 @@ function AnnotateScreen({
             fontSize: '14px',
           }}
         >
-          Why do you think that description provide <span style="text-decoration:underline">more statistical information</span>?
+          Why do you think that description provide <span style={{textDecoration:"underline"}}>more statistical information</span>?
         </label>
         <textarea
           id="descriptionStat"
