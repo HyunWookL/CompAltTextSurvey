@@ -258,7 +258,12 @@ function AnnotateScreen({
         }}
       >
         {/* <p style={{ margin: 0, fontWeight: 'bold' }}>Training Session</p> */}
-        <p style={{ margin: 0, fontWeight: 'bold' }}>Brush the most prominent region in the chart ({currentIndex + 1} / {images.length})</p>
+        <div style={{ margin: 0, fontWeight: 'bold' }}>
+	  {phase === "Phase1" && <p>Brush the most prominent region in the chart (Phase: 1 / 4, Chart: {currentIndex + 1} / {images.length})</p>}
+	  {phase === "Phase2" && <p>Based on charts and descriptions, answers the questions below (Phase: 2 / 4, Chart: {currentIndex + 1} / {images.length})</p>}
+	  {phase === "Phase3" && <p>Based on charts and descriptions, answers the questions below (Phase: 3 / 4, Chart: {currentIndex + 1} / {images.length})</p>}
+	  {phase === "Phase4" && <p>Based on charts and descriptions, answers the questions below (Phase: 4 / 4, Chart: {currentIndex + 1} / {images.length})</p>}
+	</div>
       </div>
 
       {/* 이미지 영역 */}
@@ -338,12 +343,14 @@ function AnnotateScreen({
 	      padding: "10px",
 	      }}
 	    >
+	      <p><b>Description A</b></p>
 	      <p>{DescTrad}</p>
 	    </div>
 	    <div style = {{
 	      flex: "50%",
 	      padding: "10px",
 	    }}>
+	      <p><b>Description B</b></p>
 	  	  <p>{DescOurs}</p>
 		</div>
       </div>
@@ -387,9 +394,9 @@ function AnnotateScreen({
 
       {/* Salient/Statistical/Diverse 입력창 */}
       {phase === 'Phase2' && <div id="Phase2" style={{ marginTop: "20px", color: "#555" }}>
-		<p>a. Which one provide more salient information for the visualization?</p>
+		<p>a. Which one provide <b>more salient information</b> for the visualization?</p>
 		<div style={{ marginLeft: "20px" }}>
-      	  <div style={{ display: "flex", justifyContent: "space-between", maxWidth: "400px", marginTop: "10px", textAlign: 'center'}}>
+      	  <div style={{ display: "flex", justifyContent: "space-around", maxWidth: "400px", marginTop: "10px"}}>
 	  		{['A', 'B'].map((num) => (
 	      	  <label key={num} style={{ textAlign: "center" }}>
 		    	<input
@@ -424,7 +431,7 @@ function AnnotateScreen({
             fontSize: '14px',
           }}
         >
-          Why do you think that description provide more salient information?
+          Why do you think that description provide <b>more salient information</b>?
         </label>
         <textarea
           id="descriptionSal"
@@ -444,9 +451,9 @@ function AnnotateScreen({
       </div>}
 
       {phase === 'Phase3' && <div id="Phase3" style={{ marginTop: "20px", color: "#555" }}>
-        <p>b. Which one provide more diverse information for the visualization?</p>
+        <p>b. Which one provide <b>more diverse information</b> for the visualization?</p>
         <div style={{ marginLeft: "20px" }}>
-          <div style={{ display: "flex", justifyContent: "space-between", maxWidth: "400px", marginTop: "10px", textAlign: 'center'}}>
+          <div style={{ display: "flex", justifyContent: "space-around", maxWidth: "400px", marginTop: "10px", textAlign: 'center'}}>
             {['A', 'B'].map((num) => (
               <label key={num} style={{ textAlign: "center" }}>
                 <input
@@ -481,7 +488,7 @@ function AnnotateScreen({
             fontSize: '14px',
           }}
         >
-          Why do you think that description provide more diverse information?
+          Why do you think that description provide <b>more diverse information</b>?
         </label>
         <textarea
           id="descriptionDiv"
@@ -501,9 +508,9 @@ function AnnotateScreen({
       </div>}
 
       {phase === 'Phase4' && <div id="Phase4" style={{ marginTop: "20px", color: "#555" }}>
-        <p>c. Which one provide more statistical information for the visualization?</p>
+        <p>c. Which one provide <b>more statistical information</b> for the visualization?</p>
         <div style={{ marginLeft: "20px" }}>
-          <div style={{ display: "flex", justifyContent: "space-between", maxWidth: "400px", marginTop: "10px", textAlign: 'center'}}>
+          <div style={{ display: "flex", justifyContent: "space-around", maxWidth: "400px", marginTop: "10px", textAlign: 'center'}}>
             {['A', 'B'].map((num) => (
               <label key={num} style={{ textAlign: "center" }}>
                 <input
@@ -538,7 +545,7 @@ function AnnotateScreen({
             fontSize: '14px',
           }}
         >
-          Why do you think that description provide more statistical information?
+          Why do you think that description provide <b>more statistical information</b>?
         </label>
         <textarea
           id="descriptionStat"
