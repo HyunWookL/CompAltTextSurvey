@@ -396,7 +396,7 @@ function AnnotateScreen({
       {phase === 'Phase2' && <div id="Phase2" style={{ marginTop: "20px", color: "#555" }}>
 		<p>a. Which one provide <b>more salient information</b> for the visualization?</p>
 		<div style={{ marginLeft: "20px" }}>
-      	  <div style={{ display: "flex", justifyContent: "space-around", maxWidth: "400px", marginTop: "10px"}}>
+      	  <div style={{ display: "flex", justifyContent: "space-around", width: imgSize.width, marginTop: "10px"}}>
 	  		{['A', 'B'].map((num) => (
 	      	  <label key={num} style={{ textAlign: "center" }}>
 		    	<input
@@ -431,7 +431,7 @@ function AnnotateScreen({
             fontSize: '14px',
           }}
         >
-          Why do you think that description provide <b>more salient information</b>?
+          Why do you think that description provide <span style="text-decoration:underline">more salient information</span>?
         </label>
         <textarea
           id="descriptionSal"
@@ -453,7 +453,7 @@ function AnnotateScreen({
       {phase === 'Phase3' && <div id="Phase3" style={{ marginTop: "20px", color: "#555" }}>
         <p>b. Which one provide <b>more diverse information</b> for the visualization?</p>
         <div style={{ marginLeft: "20px" }}>
-          <div style={{ display: "flex", justifyContent: "space-around", maxWidth: "400px", marginTop: "10px", textAlign: 'center'}}>
+          <div style={{ display: "flex", justifyContent: "space-around", width: imgSize.width, marginTop: "10px", textAlign: 'center'}}>
             {['A', 'B'].map((num) => (
               <label key={num} style={{ textAlign: "center" }}>
                 <input
@@ -488,7 +488,7 @@ function AnnotateScreen({
             fontSize: '14px',
           }}
         >
-          Why do you think that description provide <b>more diverse information</b>?
+          Why do you think that description provide <span style="text-decoration:underline">more diverse information</span>?
         </label>
         <textarea
           id="descriptionDiv"
@@ -510,7 +510,7 @@ function AnnotateScreen({
       {phase === 'Phase4' && <div id="Phase4" style={{ marginTop: "20px", color: "#555" }}>
         <p>c. Which one provide <b>more statistical information</b> for the visualization?</p>
         <div style={{ marginLeft: "20px" }}>
-          <div style={{ display: "flex", justifyContent: "space-around", maxWidth: "400px", marginTop: "10px", textAlign: 'center'}}>
+          <div style={{ display: "flex", justifyContent: "space-around", width: imgSize.width, marginTop: "10px", textAlign: 'center'}}>
             {['A', 'B'].map((num) => (
               <label key={num} style={{ textAlign: "center" }}>
                 <input
@@ -545,7 +545,7 @@ function AnnotateScreen({
             fontSize: '14px',
           }}
         >
-          Why do you think that description provide <b>more statistical information</b>?
+          Why do you think that description provide <span style="text-decoration:underline">more statistical information</span>?
         </label>
         <textarea
           id="descriptionStat"
@@ -604,12 +604,12 @@ function AnnotateScreen({
           color: 'white',
           border: 'none',
           borderRadius: '6px',
-          cursor: existingBoxes.length !== 1 || textInput === '' ? 'not-allowed' : 'pointer',
-          opacity: existingBoxes.length !== 1 || textInput === '' ? 0.5 : 1, // 비활성화 시 흐리게 표시
+          cursor: (phase === 'Phase4' && (MainFormData.statistic === '' || MainFormData.statisticText === '')) ? 'not-allowed' : 'pointer',
+          opacity: (phase === 'Phase4' && (MainFormData.statistic === '' || MainFormData.statisticText === '')) ? 0.5 : 1, // 비활성화 시 흐리게 표시
           transition: 'background-color 0.3s ease, transform 0.2s ease',
         }}
         onClick={handleNextImage}
-        disabled={existingBoxes.length !== 1 || textInput === ''}
+        disabled={phase === 'Phase4' && (MainFormData.statistic === '' || MainFormData.statisticText === '')}
         onMouseEnter={(e) => {
           if (currentIndex === images.length - 1) {
             e.target.style.backgroundColor = '#218838'; // Finish 버튼: 진한 초록색
