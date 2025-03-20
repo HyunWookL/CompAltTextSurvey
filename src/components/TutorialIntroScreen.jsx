@@ -21,9 +21,11 @@ function TutorialIntroScreen({ onPracticeStart }) {
 
             <div style={{ marginTop: '20px' }}>
 	    	<p>
-	            In this experiment, you will view the charts and corresponding two descriptions, select the more informative descriptions 
-	            based on specfic aspect provided in questions. You will also select the most prominent region of the chart by drawing a 
-	            bounding box, and describe your selection. You may leave the comments about the descriptions as well.
+	            In this experiment, we will show you total 12 charts and corresponding two descriptions per chart. You will conduct four tasks
+	            for each chart: 1) Select the most prominent region by drawing a bounding box and describe your selection, and 2-4) Choose the
+	            one description that better describes the chart and details why do you choose that description. When you provide the details,
+	            please describes 1) why do you choose it, 2) which parts (or, information) influence your decision, and 3) the other comments
+	            if any.
 	        </p>
             </div>
 
