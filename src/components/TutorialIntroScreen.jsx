@@ -25,7 +25,7 @@ function TutorialIntroScreen({ onPracticeStart }) {
 	            for each chart: 1) Select the most prominent region by drawing a bounding box and describe your selection, and 2-4) Choose the
 	            one description that better describes the chart and details why do you choose that description. When you provide the details,
 	            please describes 1) why do you choose it, 2) which parts (or, information) influence your decision, and 3) the other comments
-	            if any.
+	            if any. <span style={{textDecoration:"underline"}}>Plesae note that you should provide at least 100 characters.</span>
 	        </p>
             </div>
 
