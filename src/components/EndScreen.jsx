@@ -1,7 +1,7 @@
 import React from 'react';
 
 function EndScreen() {
-  const redirectionUrl = "https://app.prolific.com/submissions/complete?cc=CAPPDKE3"
+  const redirectionUrl = "https://app.prolific.com/submissions/complete?cc=CO00QOFX"
   return (
     <div style={{ textAlign: 'center', marginTop: '50px' }}>
       <h1>CONGRATULATIONS! YOU COMPLETED YOUR TASKS.</h1>
